@@ -37,6 +37,8 @@ def index(request, department=None):
     print(query)
     if department:
         users = Users.objects.filter(department=department)
+        if query:
+            users = Users.objects.filter(name__icontains=query)
 
     elif query:
         users = Users.objects.filter(name__icontains=query)
